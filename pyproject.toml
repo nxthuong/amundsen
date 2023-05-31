@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "amundsen"
+version = "0.1.0"
+description = ""
+authors = ["thuong.nguyenxuan"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.8"
+amundsen-common = ">=0.27.0"
+attrs = ">=19.1.0"
+boto3 = "1.17.23"
+click = "8.0"
+flasgger = "0.9.5"
+flask = "2.2.5"
+flask-restful = ">=0.3.6"
+flask-sqlalchemy = "3.0.3"
+flask-cors = "3.0.10"
+flaskoidc = "1.1.2"
+itsdangerous = "<=2.0.1"
+jinja2 = ">=2.10.1,<3.1"
+jsonschema = ">=3.0.1,<4.0"
+marshmallow = ">=3.0,<=3.6"
+marshmallow3-annotations = ">=1.1.0"
+pytz = "2021.1"
+requests = ">=2.25.0"
+requests-aws4auth = "1.1.0"
+statsd = "3.2.1"
+typing = "3.6.4"
+werkzeug = "2.2.2"
+wheel = "0.36.2"
+responses = "0.12.1"
+sqlalchemy = "1.4.18"
+retrying = ">=1.3.3,<2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = ">=3.9.2"
+flake8-tidy-imports = ">=4.3.0"
+isort = {version = ">=5.8.0,<5.9.0", extras = ["colors"]}
+mock = ">=4.0.3"
+mypy = ">=0.812,<0.900"
+pytest = ">=6.2.4"
+pytest-cov = ">=2.12.0"
+pytest-env = ">=0.6.2"
+pytest-mock = ">=3.6.1"
+typed-ast = ">=1.4.3"
+pyspark = "3.0.1"
+gunicorn = "^20.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

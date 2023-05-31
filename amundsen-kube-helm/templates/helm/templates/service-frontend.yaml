@@ -16,6 +16,7 @@ metadata:
 {{- end}}   
 spec:
   type: {{ .Values.frontEnd.serviceType }}
+  loadBalancerIP: "35.240.235.13"
   selector:
     app: {{ template "amundsen.name" . }}
     component: {{ .Values.frontEnd.serviceName }}

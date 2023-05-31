@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: neo4j
+  name: {{ .Release.Name }}-neo4j
   labels:
     app: {{ template "amundsen.name" . }}
     component: neo4j
