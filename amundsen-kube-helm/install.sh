@@ -23,6 +23,10 @@ kubectl create namespace amundsen
 
 # Helm chart
 cd ./amundsen-kube-helm
-helm repo add elasticsearch https://helm.elastic.co
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add neo4j https://helm.neo4j.com/neo4j
+helm repo update
 helm dependency build ./templates/helm/
+
+helm install --generate-name --dry-run --debug ./templates/helm/
 helm install my-amundsen ./templates/helm/ --namespace amundsen

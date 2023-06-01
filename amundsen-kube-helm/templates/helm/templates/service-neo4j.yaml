@@ -22,15 +22,15 @@ spec:
     release: {{ .Release.Name }}
   ports:
     - port: 7473
-      name: neo4j-{{ .Values.environment }}-https
+      name: neo4j-https
       targetPort: 7473
     - port: 7474
-      name: neo4j-{{ .Values.environment }}-http
+      name: neo4j-http
       targetPort: 7474
     - port: 7687
-      name: neo4j-{{ .Values.environment }}-bolt
+      name: neo4j-bolt
       targetPort: 7687
     - port: 1337
-      name: neo4j-{{ .Values.environment }}-shell
+      name: neo4j-shell
       targetPort: 1337
 {{ end }}

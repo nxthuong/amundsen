@@ -288,11 +288,32 @@ neo4j:
   # neo4j.enabled -- If neo4j is enabled as part of this chart, or not. Set this to false if you want to provide your own version.
   enabled: true
 
+  # Neo4j chart
+  chartEnabled: false
+  nameOverride: "neo4j-standalone"
+  neo4j:
+    name: "my-amundsen-neo4j"
+    acceptLicenseAgreement: "yes"
+    nodeSelector:
+      cloud.google.com/gke-nodepool: load-jobs-nat
+    tolerations:
+      - key: etl-pool
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+  volumes:
+    data:
+      mode: dynamic
+      dynamic:
+        storageClassName: "neo4j-data"
+        requests:
+          storage: 10Gi
+
   # neo4j.image -- The image of the neo4j container.
   image: neo4j
 
   # neo4j.imageTag -- The image tag of the neo4j container.
-  imageTag: 3.3.0
+  imageTag: 3.5.26
 
   # neo4j.initPluginsContainer -- The image used to install plugins used by neo4j.
   initPluginsContainer:
@@ -307,8 +328,8 @@ neo4j:
       - "/bin/sh"
       - "-c"
       - |
-        curl -L https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.3.0.4/apoc-3.3.0.4-all.jar -O
-        curl -L https://github.com/neo4j-contrib/neo4j-graph-algorithms/releases/download/3.3.5.0/graph-algorithms-algo-3.3.5.0.jar -O
+        curl -L https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/3.5.0.21/apoc-3.5.0.21-all.jar -O
+        curl -L https://github.com/neo4j-contrib/neo4j-graph-algorithms/releases/download/3.5.4.0/graph-algorithms-algo-3.5.4.0.jar -O
         curl -L https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.11.250/aws-java-sdk-core-1.11.250.jar -O
         curl -L https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.11.250/aws-java-sdk-s3-1.11.250.jar -O
         curl -L https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.4/httpclient-4.5.4.jar -O
@@ -377,43 +398,36 @@ neo4j:
   # neo4j.podAnnotations -- neo4j pod specific annotations.
   podAnnotations: {}
 
-# Configuration related to elasticsearch.
-# To add values to dependent charts, prefix the value with the chart name (e.g. elasticsearch)
-# By default, the ES chart runs with 3,3,2 nodes for master, data, client. Amundsen likely does not need so much,
-# so, this has been tuned down to 1,1,1.
+# Elasticsearch chart.
 elasticsearch:
   # elasticsearch.enabled -- set this to false, if you want to provide your own ES instance.
   enabled: true
-  # -- this is the service name of the amundsen elasticsearch master. Change it if you want to give a new name for the elasticsearch service  
   fullnameOverride: "my-amundsen-elasticsearch-master"
-  # -- If this set to true, the es pod will require some admin privilege, which is not allowed in most case. So set it to false
-  sysctlInitContainer:
-    enabled: true
-  # -- elasticsearch docker image name
-  image: elasticsearch
-  # -- set init memory size (Xms) and maximum memory size (Xmx) for the es jvm.
-  esJavaOpts: -Xmx1g -Xms1g
-  # -- set the pod resources
-  resources:
-    limits:
-      memory: 2Gi
-    requests:
-      memory: 2Gi
-  # -- set node selector
-  nodeSelector:
-    cloud.google.com/gke-nodepool: load-jobs-nat
-  # -- set toleration
-  tolerations:
-    - key: etl-pool
-      operator: "Equal"
-      value: "true"
-      effect: "NoSchedule"
-  # -- add ES configs
-  esConfig:
-    elasticsearch.yml: |
-      xpack.security.enabled: false
-      xpack.security.transport.ssl.enabled: false
-      xpack.security.http.ssl.enabled: false
+  image.tag: 8.8.0-debian-11-r0
+  security.enabled: false
+  data:
+    nodeSelector:
+      cloud.google.com/gke-nodepool: load-jobs-nat
+    tolerations:
+      - key: etl-pool
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+  coordinating:
+    resources:
+      requests:
+        memory: 512Mi
+  ingest:
+    resources:
+      requests:
+        memory: 512Mi
+    nodeSelector:
+      cloud.google.com/gke-nodepool: load-jobs-nat
+    tolerations:
+      - key: etl-pool
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
 
 ##############  Values for ingress ###############
 ingress:

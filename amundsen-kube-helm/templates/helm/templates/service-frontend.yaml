@@ -22,6 +22,6 @@ spec:
     component: {{ .Values.frontEnd.serviceName }}
     release: {{ .Release.Name }}
   ports:
-    - name: {{ .Chart.Name }}-{{ .Values.frontEnd.serviceName }}-{{ .Values.environment }}-http
+    - name: {{ .Chart.Name }}-{{ .Values.frontEnd.serviceName }}-http
       port: 5000
       targetPort: 5000

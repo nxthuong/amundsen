@@ -21,6 +21,6 @@ spec:
     component: {{ .Values.metadata.serviceName }}
     release: {{ .Release.Name }}
   ports:
-    - name: {{ .Chart.Name }}-{{ .Values.metadata.serviceName }}-{{ .Values.environment }}-http
+    - name: {{ .Chart.Name }}-{{ .Values.metadata.serviceName }}-http
       port: 5002
       targetPort: 5002
