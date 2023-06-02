@@ -35,4 +35,5 @@ helm install --generate-name --dry-run --debug ./templates/helm/
 helm install my-amundsen ./templates/helm/ --namespace amundsen
 
 # Test data
+kubectl get svc my-amundsen-neo4j -o jsonpath='{.spec.clusterIP}' -n amundsen
 kubectl create -f pod-testdata.yaml

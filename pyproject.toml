@@ -38,6 +38,7 @@ beaker = ">=1.10.0"
 overrides = "2.5"
 elasticsearch = "7.13.3"
 elasticsearch-dsl = "7.4.0"
+pyhocon = "^0.3.60"
 
 
 [tool.poetry.group.dev.dependencies]

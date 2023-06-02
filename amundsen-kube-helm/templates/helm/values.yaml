@@ -339,14 +339,11 @@ neo4j:
         mv *.jar /var/lib/neo4j/plugins
 
   # neo4j.resources -- See pod resourcing [ref](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
-  resources: {}
-  #resources:
-  #  limits:
-  #    cpu: 2
-  #    memory: 2Gi
-  # requests:
-  #    cpu: 1
-  #    memory: 1Gi
+  resources:
+    limits:
+      memory: 3Gi
+    requests:
+      memory: 2Gi
 
   # neo4j.config -- Neo4j application specific configuration. This type of configuration is why the charts/stable version is not used. See [ref](https://github.com/helm/charts/issues/21439)
   config:
@@ -413,6 +410,9 @@ elasticsearch:
         operator: "Equal"
         value: "true"
         effect: "NoSchedule"
+    livenessProbe:
+      initialDelaySeconds: 180
+      timeoutSeconds: 10
   coordinating:
     resources:
       requests:
@@ -428,6 +428,9 @@ elasticsearch:
         operator: "Equal"
         value: "true"
         effect: "NoSchedule"
+    livenessProbe:
+      initialDelaySeconds: 180
+      timeoutSeconds: 10
 
 ##############  Values for ingress ###############
 ingress:
