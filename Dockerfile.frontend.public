@@ -1,4 +1,4 @@
-FROM node:12-slim as node-stage
+FROM node:12-slim AS node-stage
 WORKDIR /app/amundsen_application/static
 
 COPY ./frontend/amundsen_application/static/package.json /app/amundsen_application/static/package.json
@@ -8,7 +8,7 @@ RUN npm install
 COPY ./frontend/amundsen_application/static /app/amundsen_application/static
 RUN npm run build
 
-FROM python:3.7-slim as base
+FROM python:3.7-slim AS base
 WORKDIR /app
 RUN pip3 install gunicorn
 
@@ -20,7 +20,7 @@ RUN pip3 install -e .
 
 CMD [ "python3",  "amundsen_application/wsgi.py" ]
 
-FROM base as oidc-release
+FROM base AS oidc-release
 
 RUN pip3 install -e .[oidc]
 ENV FRONTEND_SVC_CONFIG_MODULE_CLASS amundsen_application.oidc_config.OidcConfig
@@ -35,4 +35,4 @@ ENV SQLALCHEMY_DATABASE_URI sqlite:///sessions.db
 # FLASK_OIDC_CLIENT_ID - oidc client id
 # FLASK_OIDC_CLIENT_SECRET - oidc client secret
 
-FROM base as release
+FROM base AS release

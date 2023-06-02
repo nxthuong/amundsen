@@ -1,0 +1,12 @@
+FROM python:3.7-slim
+WORKDIR /app
+
+COPY ./databuilder/ /app/
+COPY requirements-dev.txt /app/requirements-dev.txt
+COPY requirements-common.txt /app/requirements-common.txt
+RUN pip3 install -e .
+
+ENV CREDENTIALS_ELASTICSEARCH_PROXY_HOST=10.0.31.202 \
+    CREDENTIALS_NEO4J_PROXY_HOST=10.0.16.91
+
+CMD ["sleep", "infinity"]

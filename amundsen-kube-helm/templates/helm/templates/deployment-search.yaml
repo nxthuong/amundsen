@@ -47,6 +47,7 @@ spec:
       containers:
       - name: {{ .Chart.Name }}-{{ .Values.search.serviceName }}
         image: {{ .Values.search.image }}:{{ .Values.search.imageTag }}
+        imagePullPolicy: Always
         ports:
         - containerPort: 5001
         envFrom:

@@ -1,4 +1,4 @@
-FROM python:3.7-slim as base
+FROM python:3.7-slim AS base
 WORKDIR /app
 RUN pip3 install gunicorn
 
@@ -12,7 +12,7 @@ COPY requirements-common.txt /app/requirements-common.txt
 
 CMD [ "python3", "metadata_service/metadata_wsgi.py" ]
 
-FROM base as oidc-release
+FROM base AS oidc-release
 
 RUN  pip3 install -e .&& \
      pip3 install -e .[oidc]
@@ -28,5 +28,5 @@ ENV SQLALCHEMY_DATABASE_URI sqlite:///sessions.db
 # FLASK_OIDC_CLIENT_ID - oidc client id
 # FLASK_OIDC_CLIENT_SECRET - oidc client secret
 
-FROM base as release
+FROM base AS release
 RUN pip3 install -e .

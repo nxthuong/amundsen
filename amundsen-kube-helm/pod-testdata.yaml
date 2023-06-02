@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-amundsen-testdata
+  labels:
+    app: amundsen
+    component: testdata
+  namespace: amundsen
+spec:
+  containers:
+  - name: testdata
+    image: gcr.io/baemin-vietnam/amundsen-testdata:dev
+    imagePullPolicy: Always

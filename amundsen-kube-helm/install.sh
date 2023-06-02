@@ -17,6 +17,9 @@ docker push gcr.io/baemin-vietnam/amundsen-metadata:dev
 docker build -f Dockerfile.search.public -t gcr.io/baemin-vietnam/amundsen-search:dev .
 docker push gcr.io/baemin-vietnam/amundsen-search:dev
 
+docker build -f Dockerfile.testdata.public -t gcr.io/baemin-vietnam/amundsen-testdata:dev .
+docker push gcr.io/baemin-vietnam/amundsen-testdata:dev
+
 # GCP - K8s cluster
 gcloud container clusters get-credentials data-service-nat --zone asia-southeast1-a --project baemin-vietnam
 kubectl create namespace amundsen
@@ -30,3 +33,6 @@ helm dependency build ./templates/helm/
 
 helm install --generate-name --dry-run --debug ./templates/helm/
 helm install my-amundsen ./templates/helm/ --namespace amundsen
+
+# Test data
+kubectl create -f pod-testdata.yaml
