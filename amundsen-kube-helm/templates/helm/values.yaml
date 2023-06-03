@@ -399,7 +399,7 @@ neo4j:
 elasticsearch:
   # elasticsearch.enabled -- set this to false, if you want to provide your own ES instance.
   enabled: true
-  fullnameOverride: "my-amundsen-elasticsearch-master"
+  fullnameOverride: "my-amundsen-elasticsearch"
   image.tag: 8.8.0-debian-11-r0
   security.enabled: false
   data:

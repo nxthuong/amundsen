@@ -11,3 +11,8 @@ spec:
   - name: testdata
     image: gcr.io/baemin-vietnam/amundsen-testdata:dev
     imagePullPolicy: Always
+    env:
+      - name: CREDENTIALS_ELASTICSEARCH_PROXY_HOST
+        value: my-amundsen-elasticsearch
+      - name: CREDENTIALS_NEO4J_PROXY_HOST
+        value: my-amundsen-neo4j
