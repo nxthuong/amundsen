@@ -360,13 +360,10 @@ neo4j:
   serviceType: ClusterIP
 
   # neo4j.persistence -- Neo4j persistence. Turn this on to keep your data between pod crashes, etc. This is also needed for backups.
-  persistence: {}
-  #  storageClass: gp2
-  #  size: 10Gi
-  #  accessMode: ReadWriteMany
-  #  efs:
-  #    dns:
-  #  path: "/"
+  persistence:
+    storageClass: standard
+    size: 10Gi
+    accessMode: ReadWriteOnce
 
   # neo4j.backup -- If enabled is set to true, make sure and set the s3 path as well.
   backup:

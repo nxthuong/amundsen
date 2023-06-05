@@ -78,7 +78,7 @@ spec:
         {{- if .Values.neo4j.persistence }}
         - name: data
           persistentVolumeClaim:
-            claimName: neo4j-pvc
+            claimName: data-my-amundsen-neo4j-data
         {{- end}}
         - name: plugins
           emptyDir: {}
