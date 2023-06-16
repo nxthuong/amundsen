@@ -98,6 +98,8 @@ def create_search_response(page_index: int,  # noqa: C901
     msg = 'Success'
     status_code = 200
     results_per_resource = {}
+    msg = ''
+    status_code = 200
     # responses are returned in the order in which the searches appear in msearch request
     for resource, response in zip(resource_types, responses):
         msg = ''
