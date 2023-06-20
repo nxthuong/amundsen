@@ -7,6 +7,12 @@ gcloud auth login
 gcloud config set project baemin-vietnam
 gcloud auth configure-docker gcr.io
 
+# Build Frontend local
+cd ./frontend/amundsen_application/static/
+nvm use 12
+npm install
+npm run build
+
 # Build Docker images
 docker build -f Dockerfile.frontend.public -t gcr.io/baemin-vietnam/amundsen-frontend:dev .
 docker push gcr.io/baemin-vietnam/amundsen-frontend:dev

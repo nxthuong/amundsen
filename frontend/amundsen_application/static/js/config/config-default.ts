@@ -33,7 +33,7 @@ const configDefault: AppConfig = {
     dateTimeShort: 'MMM DD, YYYY ha z',
     default: 'MMM DD, YYYY',
   },
-  documentTitle: 'Amundsen - Data Discovery Portal',
+  documentTitle: 'Baemin - Data Menu Portal',
   editableText: {
     columnDescLength: 250,
     tableDescLength: 750,
@@ -99,8 +99,8 @@ const configDefault: AppConfig = {
       title: 'Issue project key (optional)',
     },
   },
-  logoPath: null,
-  logoTitle: 'Amundsen',
+  logoPath: '/static/images/icons/bm-dsp-logo.svg',
+  logoTitle: 'BM Data Menu',
   mailClientFeatures: {
     feedbackEnabled: false,
     notificationsEnabled: false,
@@ -188,6 +188,40 @@ const configDefault: AppConfig = {
     },
     [ResourceType.feature]: {
       displayName: 'ML Features',
+      filterCategories: [
+        {
+          categoryId: 'entity',
+          displayName: 'Entity',
+          helpText:
+            'Enter one or more comma separated values with exact entity names or regex wildcard patterns',
+          type: FilterType.INPUT_SELECT,
+        },
+        {
+          categoryId: 'name',
+          displayName: 'Feature Name',
+          helpText:
+            'Enter one or more comma separated values with exact feature names or regex wildcard patterns',
+          type: FilterType.INPUT_SELECT,
+        },
+        {
+          categoryId: 'group',
+          displayName: 'Feature Group',
+          helpText:
+            'Enter one or more comma separated values with exact feature group names or regex wildcard patterns',
+          type: FilterType.INPUT_SELECT,
+        },
+        {
+          categoryId: 'tag',
+          displayName: 'Tag',
+          helpText:
+            'Enter one or more comma separated values with exact tag names or regex wildcard patterns',
+          type: FilterType.INPUT_SELECT,
+        },
+      ],
+      notices: {},
+      searchHighlight: {
+        enableHighlight: true,
+      },
       supportedSources: {
         bigquery: {
           displayName: 'BigQuery',
@@ -354,49 +388,6 @@ const configDefault: AppConfig = {
         },
       },
     },
-    [ResourceType.feature]: {
-      displayName: 'ML Features',
-      filterCategories: [
-        {
-          categoryId: 'entity',
-          displayName: 'Entity',
-          helpText:
-            'Enter one or more comma separated values with exact entity names or regex wildcard patterns',
-          type: FilterType.INPUT_SELECT,
-        },
-        {
-          categoryId: 'name',
-          displayName: 'Feature Name',
-          helpText:
-            'Enter one or more comma separated values with exact feature names or regex wildcard patterns',
-          type: FilterType.INPUT_SELECT,
-        },
-        {
-          categoryId: 'group',
-          displayName: 'Feature Group',
-          helpText:
-            'Enter one or more comma separated values with exact feature group names or regex wildcard patterns',
-          type: FilterType.INPUT_SELECT,
-        },
-        {
-          categoryId: 'tag',
-          displayName: 'Tag',
-          helpText:
-            'Enter one or more comma separated values with exact tag names or regex wildcard patterns',
-          type: FilterType.INPUT_SELECT,
-        },
-      ],
-      notices: {},
-      searchHighlight: {
-        enableHighlight: true,
-      },
-      supportedSources: {
-        hive: {
-          displayName: 'Hive',
-          iconClass: 'icon-hive',
-        },
-      },
-    },
     [ResourceType.user]: {
       displayName: 'People',
       searchHighlight: {
@@ -411,8 +402,8 @@ const configDefault: AppConfig = {
     defaultLineageDepth: 5,
     externalEnabled: false,
     iconPath: 'PATH_TO_ICON',
-    inAppListEnabled: false,
-    inAppPageEnabled: false,
+    inAppListEnabled: true,
+    inAppPageEnabled: true,
     isBeta: false,
     urlGenerator: (
       database: string,
