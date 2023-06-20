@@ -18,6 +18,7 @@ export interface EditableSectionProps {
   editText?: string;
   /* Should be used when readOnly=true to link to the source where users can edit the given metadata */
   editUrl?: string;
+  children?: React.ReactElement | React.ReactElement[] | React.ReactNode;
 }
 
 interface EditableSectionState {
@@ -135,7 +136,7 @@ export class EditableSection extends React.Component<
         readOnly,
         isEditing,
         setEditMode: this.setEditMode,
-      });
+      } as EditableSectionChildProps);
     });
 
     return (

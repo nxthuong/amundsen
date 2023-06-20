@@ -5,7 +5,6 @@ import * as React from 'react';
 import * as DocumentTitle from 'react-document-title';
 import * as Avatar from 'react-avatar';
 import { shallow } from 'enzyme';
-import { mocked } from 'ts-jest/utils';
 
 import Breadcrumb from 'features/Breadcrumb';
 import ResourceList from 'components/ResourceList';
@@ -254,7 +253,7 @@ describe('ProfilePage', () => {
 
       describe('if dashboards are not enabled', () => {
         it('does not render dashboard tab', () => {
-          mocked(indexDashboardsEnabled).mockImplementationOnce(() => false);
+          jest.mocked(indexDashboardsEnabled).mockImplementationOnce(() => false);
           tabInfoArray = wrapper.instance().generateTabInfo();
 
           expect(tabInfoArray.find((tab) => tab.key === 'dashboardKey')).toBe(
@@ -265,7 +264,7 @@ describe('ProfilePage', () => {
 
       describe('if dashboards are enabled', () => {
         beforeAll(() => {
-          mocked(indexDashboardsEnabled).mockImplementationOnce(() => true);
+          jest.mocked(indexDashboardsEnabled).mockImplementationOnce(() => true);
           tabInfoArray = wrapper.instance().generateTabInfo();
           dashboardTab = tabInfoArray.find(
             (tab) => tab.key === PROFILE_TAB.DASHBOARD

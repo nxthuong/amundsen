@@ -135,7 +135,7 @@ export class ColumnType extends React.Component<
         <Modal
           className="column-type-modal"
           show={showModal}
-          onHide={this.hideModal}
+          onHide={() => this.hideModal}
         >
           <Modal.Header closeButton>
             <Modal.Title>

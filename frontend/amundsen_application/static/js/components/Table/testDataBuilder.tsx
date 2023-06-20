@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import * as React from 'react';
-import { Dropdown, MenuItem } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 
 const defaultData = [
   {
@@ -350,17 +350,16 @@ function TestDataBuilder(config = {}) {
           component: (value, index) => (
             <Dropdown
               id={`detail-list-item-dropdown:${index}`}
-              pullRight
               className="column-dropdown"
             >
-              <Dropdown.Toggle noCaret>
+              <Dropdown.Toggle>
                 <span className="sr-only">More info</span>
                 <img className="icon icon-more" alt="" />
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <MenuItem onClick={() => console.log('index', index)}>
+                <Dropdown.Item onClick={() => console.log('index', index)}>
                   {value}
-                </MenuItem>
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           ),

@@ -5,7 +5,6 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mocked } from 'ts-jest/utils';
 
 import { SortDirection } from 'interfaces';
 import { BadgeStyle } from 'config/config-types';
@@ -20,9 +19,9 @@ import ColumnList, { ColumnListProps } from '.';
 
 jest.mock('config/config-utils');
 
-const mockedGetTableSortCriterias = mocked(
+const mockedGetTableSortCriterias = jest.mocked(
   ConfigUtils.getTableSortCriterias,
-  true
+  {shallow: true}
 );
 const dataBuilder = new TestDataBuilder();
 const middlewares = [];

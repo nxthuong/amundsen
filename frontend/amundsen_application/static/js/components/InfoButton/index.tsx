@@ -3,6 +3,7 @@
 
 import * as React from 'react';
 import { OverlayTrigger, Popover } from 'react-bootstrap';
+import { Placement } from 'react-bootstrap/types';
 import SanitizedHTML from 'react-sanitized-html';
 
 import { IconSizes } from 'interfaces';
@@ -16,7 +17,7 @@ const DEFAULT_PLACEMENT = 'right';
 export interface InfoButtonProps {
   infoText?: string;
   title?: string;
-  placement?: string;
+  placement?: Placement;
   size?: IconSizes;
 }
 

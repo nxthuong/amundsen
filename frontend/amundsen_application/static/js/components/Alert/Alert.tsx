@@ -148,9 +148,9 @@ export const Alert: React.FC<AlertProps> = ({
         <Modal
           className="alert-payload-modal"
           show={showPayloadModal}
-          onHide={handleModalClose}
+          onHide={() => {setShowPayloadModal(false);}}
         >
-          <Modal.Header closeButton onHide={handleModalClose}>
+          <Modal.Header closeButton onHide={() => {setShowPayloadModal(false);}}>
             <Modal.Title>{PAYLOAD_MODAL_TITLE}</Modal.Title>
           </Modal.Header>
           <Modal.Body>

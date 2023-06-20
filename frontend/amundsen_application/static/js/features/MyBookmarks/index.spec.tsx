@@ -3,7 +3,6 @@
 
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { mocked } from 'ts-jest/utils';
 
 import globalState from 'fixtures/globalState';
 import { ResourceType } from 'interfaces';
@@ -207,7 +206,7 @@ describe('MyBookmarks', () => {
 
       describe('if dashboards are not enabled', () => {
         it('does not render dashboard tab', () => {
-          mocked(indexDashboardsEnabled).mockImplementationOnce(() => false);
+          jest.mocked(indexDashboardsEnabled).mockImplementationOnce(() => false);
           tabInfoArray = wrapper.instance().generateTabInfo();
 
           expect(tabInfoArray.find((tab) => tab.key === 'dashboardKey')).toBe(
@@ -218,7 +217,7 @@ describe('MyBookmarks', () => {
 
       describe('if dashboards are enabled', () => {
         beforeAll(() => {
-          mocked(indexDashboardsEnabled).mockImplementationOnce(() => true);
+          jest.mocked(indexDashboardsEnabled).mockImplementationOnce(() => true);
           tabInfoArray = wrapper.instance().generateTabInfo();
           dashboardTab = tabInfoArray.find((tab) => tab.key === 'dashboardKey');
         });

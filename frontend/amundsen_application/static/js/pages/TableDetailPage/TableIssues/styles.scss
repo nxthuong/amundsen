@@ -33,7 +33,7 @@ $shimmer-loader-lines: 1, 2;
     }
 
     .table-issue-priority {
-      line-height: $issue-banner-height / 2;
+      line-height: calc($issue-banner-height / 2);
     }
   }
 

@@ -3,7 +3,6 @@
 
 import * as React from 'react';
 
-import { mocked } from 'ts-jest/utils';
 import { shallow } from 'enzyme';
 
 import { SearchResults } from 'ducks/search/types';
@@ -335,7 +334,7 @@ describe('InlineSearchResults', () => {
     it('returns the results of getSourceIconClass for ResourceType.dashboard', () => {
       const mockClass = 'test-class';
 
-      mocked(getSourceIconClass).mockImplementation(() => mockClass);
+      jest.mocked(getSourceIconClass).mockImplementation(() => mockClass);
       const givenDashboard = props.dashboards.results[0];
       const output = wrapper
         .instance()
@@ -351,7 +350,7 @@ describe('InlineSearchResults', () => {
     it('returns the results of getSourceIconClass for ResourceType.table', () => {
       const mockClass = 'test-class';
 
-      mocked(getSourceIconClass).mockImplementation(() => mockClass);
+      jest.mocked(getSourceIconClass).mockImplementation(() => mockClass);
       const givenTable = props.tables.results[0];
       const output = wrapper
         .instance()
@@ -499,7 +498,7 @@ describe('InlineSearchResults', () => {
     it('returns the results of getSourceDisplayName for ResourceType.dashboard', () => {
       const mockName = 'Mode';
 
-      mocked(getSourceDisplayName).mockImplementation(() => mockName);
+      jest.mocked(getSourceDisplayName).mockImplementation(() => mockName);
       const givenDashboard = props.dashboards.results[0];
       const output = wrapper
         .instance()
@@ -515,7 +514,7 @@ describe('InlineSearchResults', () => {
     it('returns the results of getSourceDisplayName for ResourceType.table', () => {
       const mockName = 'Hive';
 
-      mocked(getSourceDisplayName).mockImplementation(() => mockName);
+      jest.mocked(getSourceDisplayName).mockImplementation(() => mockName);
       const givenTable = props.tables.results[0];
       const output = wrapper
         .instance()
@@ -690,7 +689,7 @@ describe('InlineSearchResults', () => {
 
       describe('calls renderResultsByResource for ResourceType.user based on config', () => {
         it('does not call if indexUsersEnabled() = false', () => {
-          mocked(indexUsersEnabled).mockImplementation(() => false);
+          jest.mocked(indexUsersEnabled).mockImplementation(() => false);
           renderResultsByResourceSpy.mockClear();
           wrapper.instance().renderResults();
 
@@ -700,7 +699,7 @@ describe('InlineSearchResults', () => {
         });
 
         it('calls if indexUsersEnabled() = true', () => {
-          mocked(indexUsersEnabled).mockImplementation(() => true);
+          jest.mocked(indexUsersEnabled).mockImplementation(() => true);
           renderResultsByResourceSpy.mockClear();
           wrapper.instance().renderResults();
 

@@ -3,7 +3,6 @@
 
 import * as React from 'react';
 
-import { mocked } from 'ts-jest/utils';
 import { shallow } from 'enzyme';
 
 import { ResourceType } from 'interfaces';
@@ -99,7 +98,7 @@ describe('SearchItemList', () => {
 
     describe('renders ResourceType.user SearchItem based on config', () => {
       it('when indexUsersEnabled = true, renders SearchItem', () => {
-        mocked(indexUsersEnabled).mockImplementation(() => true);
+        jest.mocked(indexUsersEnabled).mockImplementation(() => true);
         ({ props, wrapper } = setup());
         mockListItemText = 'Hello';
         getListItemTextSpy = jest
@@ -120,7 +119,7 @@ describe('SearchItemList', () => {
       });
 
       it('when indexUsersEnabled = false, does not render SearchItem', () => {
-        mocked(indexUsersEnabled).mockImplementation(() => false);
+        jest.mocked(indexUsersEnabled).mockImplementation(() => false);
         ({ wrapper } = setup());
         const item = wrapper
           .find('SearchItem')
@@ -132,7 +131,7 @@ describe('SearchItemList', () => {
 
     describe('renders ResourceType.dashboard SearchItem based on config', () => {
       it('when indexDashboardsEnabled = true, renders SearchItem', () => {
-        mocked(indexDashboardsEnabled).mockImplementation(() => true);
+        jest.mocked(indexDashboardsEnabled).mockImplementation(() => true);
         ({ props, wrapper } = setup());
         mockListItemText = 'Hello';
         getListItemTextSpy = jest
@@ -155,7 +154,7 @@ describe('SearchItemList', () => {
       });
 
       it('when indexDashboardsEnabled = false, does not render SearchItem', () => {
-        mocked(indexDashboardsEnabled).mockImplementation(() => false);
+        jest.mocked(indexDashboardsEnabled).mockImplementation(() => false);
         ({ wrapper } = setup());
         const item = wrapper
           .find('SearchItem')
@@ -169,7 +168,7 @@ describe('SearchItemList', () => {
 
     describe('renders ResourceType.feature SearchItem based on config', () => {
       it('when indexFeaturesEnabled = true, renders SearchItem', () => {
-        mocked(indexFeaturesEnabled).mockImplementation(() => true);
+        jest.mocked(indexFeaturesEnabled).mockImplementation(() => true);
         ({ props, wrapper } = setup());
         mockListItemText = 'Hello';
         getListItemTextSpy = jest
@@ -192,7 +191,7 @@ describe('SearchItemList', () => {
       });
 
       it('when indexFeaturesEnabled = false, does not render SearchItem', () => {
-        mocked(indexFeaturesEnabled).mockImplementation(() => false);
+        jest.mocked(indexFeaturesEnabled).mockImplementation(() => false);
         ({ wrapper } = setup());
         const item = wrapper
           .find('SearchItem')

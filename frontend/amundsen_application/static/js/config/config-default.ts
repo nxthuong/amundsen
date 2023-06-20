@@ -17,8 +17,8 @@ const configDefault: AppConfig = {
     showBadgesInHome: true,
   },
   columnLineage: {
-    inAppListEnabled: false,
-    inAppPageEnabled: false,
+    inAppListEnabled: true,
+    inAppPageEnabled: true,
     urlGenerator: (
       database: string,
       cluster: string,
@@ -188,6 +188,40 @@ const configDefault: AppConfig = {
     },
     [ResourceType.feature]: {
       displayName: 'ML Features',
+      filterCategories: [
+        {
+          categoryId: 'entity',
+          displayName: 'Entity',
+          helpText:
+            'Enter one or more comma separated values with exact entity names or regex wildcard patterns',
+          type: FilterType.INPUT_SELECT,
+        },
+        {
+          categoryId: 'name',
+          displayName: 'Feature Name',
+          helpText:
+            'Enter one or more comma separated values with exact feature names or regex wildcard patterns',
+          type: FilterType.INPUT_SELECT,
+        },
+        {
+          categoryId: 'group',
+          displayName: 'Feature Group',
+          helpText:
+            'Enter one or more comma separated values with exact feature group names or regex wildcard patterns',
+          type: FilterType.INPUT_SELECT,
+        },
+        {
+          categoryId: 'tag',
+          displayName: 'Tag',
+          helpText:
+            'Enter one or more comma separated values with exact tag names or regex wildcard patterns',
+          type: FilterType.INPUT_SELECT,
+        },
+      ],
+      notices: {},
+      searchHighlight: {
+        enableHighlight: true,
+      },
       supportedSources: {
         bigquery: {
           displayName: 'BigQuery',
@@ -354,49 +388,6 @@ const configDefault: AppConfig = {
         },
       },
     },
-    [ResourceType.feature]: {
-      displayName: 'ML Features',
-      filterCategories: [
-        {
-          categoryId: 'entity',
-          displayName: 'Entity',
-          helpText:
-            'Enter one or more comma separated values with exact entity names or regex wildcard patterns',
-          type: FilterType.INPUT_SELECT,
-        },
-        {
-          categoryId: 'name',
-          displayName: 'Feature Name',
-          helpText:
-            'Enter one or more comma separated values with exact feature names or regex wildcard patterns',
-          type: FilterType.INPUT_SELECT,
-        },
-        {
-          categoryId: 'group',
-          displayName: 'Feature Group',
-          helpText:
-            'Enter one or more comma separated values with exact feature group names or regex wildcard patterns',
-          type: FilterType.INPUT_SELECT,
-        },
-        {
-          categoryId: 'tag',
-          displayName: 'Tag',
-          helpText:
-            'Enter one or more comma separated values with exact tag names or regex wildcard patterns',
-          type: FilterType.INPUT_SELECT,
-        },
-      ],
-      notices: {},
-      searchHighlight: {
-        enableHighlight: true,
-      },
-      supportedSources: {
-        hive: {
-          displayName: 'Hive',
-          iconClass: 'icon-hive',
-        },
-      },
-    },
     [ResourceType.user]: {
       displayName: 'People',
       searchHighlight: {
@@ -411,8 +402,8 @@ const configDefault: AppConfig = {
     defaultLineageDepth: 5,
     externalEnabled: false,
     iconPath: 'PATH_TO_ICON',
-    inAppListEnabled: false,
-    inAppPageEnabled: false,
+    inAppListEnabled: true,
+    inAppPageEnabled: true,
     isBeta: false,
     urlGenerator: (
       database: string,

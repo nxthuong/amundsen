@@ -3,7 +3,6 @@
 
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { mocked } from 'ts-jest/utils';
 
 import { RightTriangleIcon, DownTriangleIcon } from 'components/SVGIcons';
 import TestDataBuilder from './testDataBuilder';
@@ -471,11 +470,11 @@ describe('Table', () => {
 
         beforeEach(() => {
           jest.spyOn(console, 'error');
-          mocked(console.error).mockImplementation(jest.fn);
+          jest.mocked(console.error).mockImplementation(jest.fn);
         });
 
         afterEach(() => {
-          mocked(console.error).mockRestore();
+          jest.mocked(console.error).mockRestore();
         });
 
         it('throws an error', () => {

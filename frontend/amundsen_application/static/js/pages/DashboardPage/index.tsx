@@ -281,7 +281,7 @@ export class DashboardPage extends React.Component<
           <aside className="left-panel">
             {!!dashboardNotice && (
               <Alert
-                message={dashboardNotice.messageHtml}
+                message={typeof dashboardNotice.messageHtml === "string" ? dashboardNotice.messageHtml : dashboardNotice.messageHtml("notice.test")}
                 severity={dashboardNotice.severity}
                 payload={dashboardNotice.payload}
               />

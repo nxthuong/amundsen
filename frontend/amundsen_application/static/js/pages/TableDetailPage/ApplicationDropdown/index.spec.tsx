@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import * as React from 'react';
-import { Dropdown, MenuItem } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { mount } from 'enzyme';
 
 import ApplicationDropdown, { ApplicationDropdownProps } from '.';
@@ -101,7 +101,7 @@ describe('ApplicationDropdown', () => {
           tableApps: [mockAirflowProducingTableApp],
         });
         const expected = 1;
-        const actual = wrapper.find(MenuItem).length;
+        const actual = wrapper.find(Dropdown.Item).length;
 
         expect(actual).toEqual(expected);
       });
@@ -165,7 +165,7 @@ describe('ApplicationDropdown', () => {
           ],
         });
         const expected = 3;
-        const actual = wrapper.find(MenuItem).length;
+        const actual = wrapper.find(Dropdown.Item).length;
 
         expect(actual).toEqual(expected);
       });

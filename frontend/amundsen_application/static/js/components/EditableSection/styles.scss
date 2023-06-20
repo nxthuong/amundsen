@@ -16,12 +16,12 @@
 
   .section-title {
     color: $text-tertiary;
-    margin-bottom: $spacer-1/2;
+    margin-bottom: calc($spacer-1 / 2);
     font-weight: 700;
   }
 
   .edit-button {
-    margin-left: $spacer-1/2;
+    margin-left: calc($spacer-1 / 2);
     opacity: 0;
 
     img {

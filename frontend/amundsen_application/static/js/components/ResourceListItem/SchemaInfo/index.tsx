@@ -3,6 +3,7 @@
 
 import * as React from 'react';
 import { OverlayTrigger, Popover } from 'react-bootstrap';
+import { Placement } from 'react-bootstrap/types';
 
 import './styles.scss';
 
@@ -10,7 +11,7 @@ export interface SchemaInfoProps {
   schema: string;
   table: string;
   desc: string;
-  placement?: string;
+  placement?: Placement;
 }
 
 const SchemaInfo: React.FC<SchemaInfoProps> = ({

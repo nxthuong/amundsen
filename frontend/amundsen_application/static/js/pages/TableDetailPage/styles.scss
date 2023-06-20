@@ -55,7 +55,7 @@ $width-increment-5: $width-increment * 5;
 
     .loading-spinner {
       height: 20px;
-      margin: 0 0 0 $spacer-1/2;
+      margin: 0 0 0 calc($spacer-1 / 2);
       width: 20px;
     }
   }

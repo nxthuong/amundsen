@@ -1,8 +1,6 @@
 // Copyright Contributors to the Amundsen project.
 // SPDX-License-Identifier: Apache-2.0
 
-import { mocked } from 'ts-jest/utils';
-
 import { indexUsersEnabled } from 'config/config-utils';
 
 import { GlobalState } from 'ducks/rootReducer';
@@ -38,7 +36,7 @@ describe('mapStateToProps', () => {
   });
 
   it('returns expected itemProps when indexUsersEnabled()', () => {
-    mocked(indexUsersEnabled).mockImplementation(() => true);
+    jest.mocked(indexUsersEnabled).mockImplementation(() => true);
     result = mapStateToProps(mockState);
     const id = activeUser0.user_id;
 
@@ -54,7 +52,7 @@ describe('mapStateToProps', () => {
   });
 
   it('returns expected itemProps when !indexUsersEnabled()', () => {
-    mocked(indexUsersEnabled).mockImplementation(() => false);
+    jest.mocked(indexUsersEnabled).mockImplementation(() => false);
     result = mapStateToProps(mockState);
     expectedItemProps = {
       [activeUser0.user_id]: {

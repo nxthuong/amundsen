@@ -39,7 +39,7 @@ const UniqueValuesModal: React.FC<UniqueValuesModalProps> = ({
     className="unique-values-modal"
     onHide={onClose}
     show={shouldShow}
-    scrollable="true"
+    scrollable={true}
   >
     <Modal.Header className="unique-values-modal-header" closeButton>
       <Modal.Title>{UNIQUE_VALUES_MODAL_TITLE}</Modal.Title>

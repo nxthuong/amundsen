@@ -70,7 +70,7 @@ const renderLineageLinks = (entity, index, direction) => {
       key={lineageDisplayText}
       trigger={['hover', 'focus']}
       placement="top"
-      delayShow={DELAY_SHOW_POPOVER_MS}
+      delay={DELAY_SHOW_POPOVER_MS}
       overlay={
         <Popover id="popover-trigger-hover-focus">{lineageDisplayText}</Popover>
       }

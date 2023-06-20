@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import * as React from 'react';
-import { MenuItem, OverlayTrigger, Popover } from 'react-bootstrap';
+import { Dropdown, OverlayTrigger, Popover } from 'react-bootstrap';
 
 import { TableApp } from 'interfaces';
 import { DELAY_SHOW_POPOVER_MS } from '../constants';
@@ -20,10 +20,10 @@ const getMenuItem = (app: TableApp, handleClick) => (
     key={app.id}
     trigger={['hover', 'focus']}
     placement="top"
-    delayShow={DELAY_SHOW_POPOVER_MS}
+    delay={DELAY_SHOW_POPOVER_MS}
     overlay={<Popover id="popover-trigger-hover-focus">{app.id}</Popover>}
   >
-    <MenuItem
+    <Dropdown.Item
       href={app.application_url}
       onClick={handleClick}
       target="_blank"
@@ -32,7 +32,7 @@ const getMenuItem = (app: TableApp, handleClick) => (
       <div className="application-dropdown-menu-item-row">
         <span className="menu-item-content">{app.id}</span>
       </div>
-    </MenuItem>
+    </Dropdown.Item>
   </OverlayTrigger>
 );
 
@@ -68,7 +68,7 @@ const GenericMenu: React.FC<GenericMenuProps> = ({
       const isLastApp = nameIdx + 1 < appNames.length;
 
       if (isLastApp) {
-        menuItems = [...menuItems, <MenuItem divider />];
+        menuItems = [...menuItems, <Dropdown.Item divider />];
       }
     });
   });

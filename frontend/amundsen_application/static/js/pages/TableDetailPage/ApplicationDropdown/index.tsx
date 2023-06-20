@@ -130,7 +130,6 @@ const ApplicationDropdown: React.FC<ApplicationDropdownProps> = ({
     <Dropdown
       className="header-link application-dropdown"
       id="application-dropdown"
-      pullRight
     >
       <Dropdown.Toggle className="application-dropdown-button">
         <AvatarLabel

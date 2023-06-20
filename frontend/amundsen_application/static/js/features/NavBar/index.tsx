@@ -6,7 +6,7 @@ import * as Avatar from 'react-avatar';
 import { RouteComponentProps } from 'react-router';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Dropdown, MenuItem } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { Binoculars, GridIcon } from 'components/SVGIcons';
 
 import { LinkConfig, TourConfig } from 'config/config-types';
@@ -121,17 +121,16 @@ export const AppSuiteMenu: React.FC<AppSuiteMenuProps> = ({
   return (
     <Dropdown
       id="app-suite-dropdown"
-      pullRight
       onToggle={onClick}
       onSelect={handleItemClick}
     >
-      <Dropdown.Toggle noCaret className="btn btn-nav-bar-icon btn-flat-icon">
+      <Dropdown.Toggle className="btn btn-nav-bar-icon btn-flat-icon">
         <GridIcon fill={theme === 'dark' ? COLOR_LIGHT : COLOR_DARK} />
         <span className="sr-only">{APP_SUITE_BUTTON_TEXT}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu className="app-suite-menu">
         {appList?.map(({ label, id, href, target, iconPath }) => (
-          <MenuItem
+          <Dropdown.Item
             key={id}
             className="app-suite-link"
             href={href}
@@ -141,7 +140,7 @@ export const AppSuiteMenu: React.FC<AppSuiteMenuProps> = ({
               <img className="app-suite-logo" src={iconPath} alt="" />
             )}
             {label}
-          </MenuItem>
+          </Dropdown.Item>
         ))}
       </Dropdown.Menu>
     </Dropdown>
@@ -268,8 +267,8 @@ export const ProfileMenu: React.FC<ProfileMenuProps> = ({ loggedInUser }) => {
   }
 
   return (
-    <Dropdown id="user-dropdown" pullRight>
-      <Dropdown.Toggle noCaret className="nav-bar-avatar avatar-dropdown">
+    <Dropdown id="user-dropdown">
+      <Dropdown.Toggle className="nav-bar-avatar avatar-dropdown">
         {avatar}
       </Dropdown.Toggle>
       <Dropdown.Menu className="profile-menu">
@@ -277,14 +276,14 @@ export const ProfileMenu: React.FC<ProfileMenuProps> = ({ loggedInUser }) => {
           <div className="title-2">{display_name}</div>
           <div>{email}</div>
         </div>
-        <MenuItem
+        <Dropdown.Item
           componentClass={Link}
           id="nav-bar-avatar-link"
           to={userLink}
           href={userLink}
         >
           {PROFILE_LINK_TEXT}
-        </MenuItem>
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );

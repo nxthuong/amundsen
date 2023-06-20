@@ -20,7 +20,7 @@ export const AlertList: React.FC<AlertListProps> = ({ notices }) => {
       {notices.map((notice, idx) => (
         <Alert
           key={idx}
-          message={notice.messageHtml}
+          message={ typeof notice.messageHtml === "string" ? notice.messageHtml : notice.messageHtml("notice.test") }
           severity={notice.severity}
           payload={notice.payload}
         />

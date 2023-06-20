@@ -7,6 +7,13 @@ gcloud auth login
 gcloud config set project baemin-vietnam
 gcloud auth configure-docker gcr.io
 
+# Build frontend local
+cd ./frontend/amundsen_application/static/
+export NODE_GYP_FORCE_PYTHON=/usr/local/bin/python3.10
+npm rebuild node-sass
+npm install
+npm run build
+
 # Build Docker images
 docker build -f Dockerfile.frontend.public -t gcr.io/baemin-vietnam/amundsen-frontend:dev .
 docker push gcr.io/baemin-vietnam/amundsen-frontend:dev

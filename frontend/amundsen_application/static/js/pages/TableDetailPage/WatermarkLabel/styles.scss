@@ -22,7 +22,7 @@ $date-range-label-width: 45px;
 
   .date-range {
     margin-top: 0;
-    margin-bottom: $spacer-1/2;
+    margin-bottom: calc($spacer-1 / 2);
   }
 
   .date-range-label {
@@ -31,6 +31,6 @@ $date-range-label-width: 45px;
   }
 
   .date-range-value {
-    margin-left: $spacer-1/2;
+    margin-left: calc($spacer-1 / 2);
   }
 }

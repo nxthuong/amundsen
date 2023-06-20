@@ -181,7 +181,7 @@ export class DataPreviewButton extends React.Component<
       <OverlayTrigger
         trigger={['hover', 'focus']}
         placement="top"
-        delayHide={200}
+        delay={200}
         overlay={popoverHover}
       >
         {/* Disabled buttons don't trigger hover/focus events so we need a wrapper */}

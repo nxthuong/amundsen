@@ -56,8 +56,7 @@ const TableReportsDropdown: React.FC<ListSortingDropdownProps> = ({
     <Dropdown
       className="list-sorting-dropdown"
       id="list-sorting-dropdown"
-      pullRight
-      open={isOpen}
+      show={isOpen}
       onToggle={() => {
         setOpen(!isOpen);
       }}

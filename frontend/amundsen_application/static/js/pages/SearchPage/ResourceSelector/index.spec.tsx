@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import * as React from 'react';
-import { mocked } from 'ts-jest/utils';
 import { shallow } from 'enzyme';
 
 import globalState from 'fixtures/globalState';
@@ -129,7 +128,7 @@ describe('ResourceSelector', () => {
 
     describe('user resource', () => {
       it('renders when enabled', () => {
-        mocked(indexUsersEnabled).mockImplementationOnce(() => true);
+        jest.mocked(indexUsersEnabled).mockImplementationOnce(() => true);
         renderRadioOptionSpy.mockClear();
         wrapper.instance().render();
 
@@ -137,7 +136,7 @@ describe('ResourceSelector', () => {
       });
 
       it('does not render when disabled', () => {
-        mocked(indexUsersEnabled).mockImplementationOnce(() => false);
+        jest.mocked(indexUsersEnabled).mockImplementationOnce(() => false);
         renderRadioOptionSpy.mockClear();
         wrapper.instance().render();
 
@@ -150,7 +149,7 @@ describe('ResourceSelector', () => {
 
     describe('dashboard resource', () => {
       it('renders when enabled', () => {
-        mocked(indexDashboardsEnabled).mockImplementationOnce(() => true);
+        jest.mocked(indexDashboardsEnabled).mockImplementationOnce(() => true);
         renderRadioOptionSpy.mockClear();
         wrapper.instance().render();
 
@@ -161,7 +160,7 @@ describe('ResourceSelector', () => {
       });
 
       it('does not render when disabled', () => {
-        mocked(indexDashboardsEnabled).mockImplementationOnce(() => false);
+        jest.mocked(indexDashboardsEnabled).mockImplementationOnce(() => false);
         renderRadioOptionSpy.mockClear();
         wrapper.instance().render();
 

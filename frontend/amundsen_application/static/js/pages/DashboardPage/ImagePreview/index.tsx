@@ -37,7 +37,7 @@ const PreviewModal = ({ imageSrc, onClose }: PreviewModalProps) => {
     <Modal
       show={show}
       onHide={handleClose}
-      scrollable="true"
+      scrollable={true}
       className="dashboard-preview-modal"
     >
       <Modal.Header closeButton>

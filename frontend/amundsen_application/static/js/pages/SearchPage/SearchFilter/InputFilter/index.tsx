@@ -176,7 +176,7 @@ export class InputFilter extends React.Component<
       <OverlayTrigger
         trigger={['hover', 'focus']}
         placement="top"
-        delayShow={DELAY_SHOW_POPOVER_MS}
+        delay={DELAY_SHOW_POPOVER_MS}
         overlay={
           <Popover id={categoryId + '-help-text-popover'}>
             <SanitizedHTML html={helpText} />

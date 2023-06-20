@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import * as React from 'react';
-import { mocked } from 'ts-jest/utils';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
@@ -86,10 +85,10 @@ describe('TableHeaderBullets', () => {
     let wrapper;
 
     beforeAll(() => {
-      mocked(getSourceDisplayName).mockImplementation(
+      jest.mocked(getSourceDisplayName).mockImplementation(
         () => MOCK_DB_DISPLAY_NAME
       );
-      mocked(getDisplayNameByResource).mockImplementation(
+      jest.mocked(getDisplayNameByResource).mockImplementation(
         () => MOCK_RESOURCE_DISPLAY_NAME
       );
       ({ props, wrapper } = setup());
