@@ -402,6 +402,35 @@ const configDefault: AppConfig = {
   searchPagination: {
     resultsPerPage: 10,
   },
+  searchColumnRenders: [
+    {
+      columnName: 'last_query_at',
+      renderFunction: (table) => {
+        /**
+         * Extract last query timestamp from `programmatic_descriptions`
+         */
+        if (
+          !table.hasOwnProperty('programmatic_descriptions') ||
+          !Array.isArray(table.programmatic_descriptions)
+        ) {
+          return '';
+        }
+
+        let items: string[] = table.programmatic_descriptions;
+
+        items = items.filter((val) => val.startsWith('Last query:'));
+        if (items.length === 0) {
+          return '';
+        }
+
+        let ts = items[0].split('At:')[1];
+
+        ts = ts.trim();
+
+        return ts;
+      },
+    },
+  ],
   tableLineage: {
     defaultLineageDepth: 5,
     externalEnabled: false,

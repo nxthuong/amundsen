@@ -6,6 +6,7 @@ import * as React from 'react';
 import './styles.scss';
 
 import { ResourceType } from 'interfaces';
+import { getSearchColumnRenders } from 'config/config-utils';
 import {
   RESOURCE_HEADER_TITLE,
   SOURCE_HEADER_TITLE,
@@ -18,35 +19,63 @@ export interface ResourceListHeaderProps {
   resourceTypes: ResourceType[];
 }
 
-const resourceTypeToHeaderClassMap = {
-  0: 'resource-header',
-  1: 'source-header',
-  2: 'badge-last-run-header',
-  3: 'entity-header',
+const resourceTypeToHeaderClassMap = [
+  'resource-header',
+  'source-header',
+  'badge-last-run-header',
+  'entity-header',
+];
+
+const getHeaderClass = (index: number) => {
+  if (index >= resourceTypeToHeaderClassMap.length) {
+    return resourceTypeToHeaderClassMap[-1];
+  }
+
+  return resourceTypeToHeaderClassMap[index];
 };
 
 const getResourceHeaders = (type: ResourceType) => {
+  const columnRenders = getSearchColumnRenders();
+  const columnNames = columnRenders.map((item) =>
+    item.columnName.toUpperCase()
+  );
+  let headers: string[];
+
   switch (type) {
     case ResourceType.dashboard:
-      return [
+      headers = [
         RESOURCE_HEADER_TITLE,
         SOURCE_HEADER_TITLE,
         LAST_UPDATED_HEADER_TITLE,
       ];
+      break;
     case ResourceType.feature:
-      return [
+      headers = [
         RESOURCE_HEADER_TITLE,
         SOURCE_HEADER_TITLE,
         BADGES_HEADER_TITLE,
         ENTITY_HEADER_TITLE,
       ];
+      break;
     case ResourceType.table:
-      return [RESOURCE_HEADER_TITLE, SOURCE_HEADER_TITLE, BADGES_HEADER_TITLE];
+      headers = [
+        RESOURCE_HEADER_TITLE,
+        SOURCE_HEADER_TITLE,
+        BADGES_HEADER_TITLE,
+      ];
+      break;
     case ResourceType.user:
-      return [RESOURCE_HEADER_TITLE, SOURCE_HEADER_TITLE, BADGES_HEADER_TITLE];
+      headers = [
+        RESOURCE_HEADER_TITLE,
+        SOURCE_HEADER_TITLE,
+        BADGES_HEADER_TITLE,
+      ];
+      break;
     default:
-      return [];
+      headers = [];
   }
+
+  return [...headers, ...columnNames];
 };
 
 const ResourceListHeader: React.FC<ResourceListHeaderProps> = ({
@@ -61,10 +90,7 @@ const ResourceListHeader: React.FC<ResourceListHeaderProps> = ({
   return (
     <div className="resource-list-header">
       {headers?.map((headerText, index) => (
-        <span
-          className={`${resourceTypeToHeaderClassMap[index]}`}
-          key={`${resourceTypeToHeaderClassMap[index]}`}
-        >
+        <span className={getHeaderClass(index)} key={getHeaderClass(index)}>
           <span className="header-text">{headerText}</span>
         </span>
       ))}

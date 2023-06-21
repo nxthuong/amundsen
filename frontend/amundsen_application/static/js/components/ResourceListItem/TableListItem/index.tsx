@@ -8,7 +8,11 @@ import { ResourceType, TableResource } from 'interfaces';
 
 import BookmarkIcon from 'components/Bookmark/BookmarkIcon';
 
-import { getSourceDisplayName, getSourceIconClass } from 'config/config-utils';
+import {
+  getSourceDisplayName,
+  getSourceIconClass,
+  getSearchColumnRenders,
+} from 'config/config-utils';
 
 import BadgeList from 'features/BadgeList';
 import SchemaInfo from 'components/ResourceListItem/SchemaInfo';
@@ -127,8 +131,13 @@ const TableListItem: React.FC<TableListItemProps> = ({
             </div>
           </div>
         )}
-        <img className="icon icon-right" alt="" />
       </div>
+      {getSearchColumnRenders().map((item) => (
+        <div className="resource-custom">
+          {item.renderFunction(table)}
+          <img className="icon icon-right" alt="" />
+        </div>
+      ))}
     </Link>
   </li>
 );

@@ -3,6 +3,7 @@ import {
   FilterType,
   ResourceType,
   SortCriteria,
+  ColumnRenderConfig,
 } from '../interfaces';
 
 import { Widget } from '../interfaces/Widgets';
@@ -39,6 +40,7 @@ export interface AppConfig {
   productTour: ToursConfig;
   resourceConfig: ResourceConfig;
   searchPagination: SearchPagination;
+  searchColumnRenders: ColumnRenderConfig[];
   tableLineage: TableLineageConfig;
   tableProfile: TableProfileConfig;
   tableQualityChecks: TableQualityChecksConfig;

@@ -66,6 +66,7 @@ def map_table_result(result: Dict) -> Dict:
         'name': name,
         'cluster': result.get('cluster', None),
         'description': result.get('description', None),
+        'programmatic_descriptions': result.get('programmatic_descriptions', None),
         'database': result.get('database', None),
         'schema': result.get('schema', None),
         'schema_description': result.get('schema_description', None),

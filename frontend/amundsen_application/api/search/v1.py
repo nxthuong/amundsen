@@ -136,6 +136,7 @@ def _search_resources(*, search_term: str,
         status_code = response.status_code
 
         if status_code == HTTPStatus.OK:
+            LOGGER.info(f"Raw response: {response.json()}")
             search_response = SearchResponseSchema().loads(json.dumps(response.json()))
             results_dict['msg'] = search_response.msg
             results = search_response.results

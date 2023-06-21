@@ -3,7 +3,7 @@ import { BadgeStyle, BadgeStyleConfig } from 'config/config-types';
 import { convertText, CaseType } from 'utils/text';
 
 import { TableMetadata } from 'interfaces/TableMetadata';
-import { ResourceType } from '../interfaces';
+import { ResourceType, ColumnRenderConfig } from '../interfaces';
 import {
   AnalyticsConfig,
   FilterConfig,
@@ -645,4 +645,11 @@ export function getUserIdLabel(): string {
  */
 export function getDateConfiguration(): DateFormatConfig {
   return AppConfig.date;
+}
+
+/**
+ * Returns the column render configuration
+ */
+export function getSearchColumnRenders(): ColumnRenderConfig[] {
+  return AppConfig.searchColumnRenders;
 }

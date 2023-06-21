@@ -77,6 +77,7 @@ export interface TableResource extends Resource {
   badges?: Badge[];
   highlight?: TableSearchHighlights;
   link?: string;
+  programmatic_descriptions?: string;
 }
 
 export enum SortDirection {
@@ -87,6 +88,11 @@ export interface SortCriteria {
   name: string;
   key: string;
   direction: SortDirection;
+}
+
+export interface ColumnRenderConfig {
+  columnName: string;
+  renderFunction: (data: any) => string;
 }
 
 export interface UserResource extends Resource, PeopleUser {

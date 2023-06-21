@@ -148,4 +148,9 @@ $resource-item-height: 110px;
     margin-left: $spacer-3;
     margin-top: auto;
   }
+
+  .resource-custom {
+    display: flex;
+    flex: 2;
+  }
 }
