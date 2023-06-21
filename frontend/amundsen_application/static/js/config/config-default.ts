@@ -336,6 +336,10 @@ const configDefault: AppConfig = {
           displayName: 'Github',
           iconPath: '/static/images/github.png',
         },
+        bigquery: {
+          displayName: 'BigQuery',
+          iconPath: '/static/images/bigquery.png',
+        },
       },
       supportedSources: {
         bigquery: {

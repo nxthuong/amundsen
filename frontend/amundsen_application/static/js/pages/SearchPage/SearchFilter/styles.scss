@@ -37,6 +37,10 @@
     display: flex;
     justify-content: space-between;
     margin-top: $spacer-3;
+
+    .btn-default {
+      padding: 6px 14px;
+    }
   }
 
   .filter-operation-toggle {
