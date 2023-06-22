@@ -45,7 +45,8 @@ class ElasticsearchProxyV2():
         'database': 'database.raw',
         'cluster': 'cluster.raw',
         'description': 'description',
-        'resource_type': 'resource_type'
+        'resource_type': 'resource_type',
+        'programmatic_descriptions': 'programmatic_descriptions'
     }
 
     # mapping to translate request for dashboard resources
@@ -97,7 +98,8 @@ class ElasticsearchProxyV2():
                          'schema^2',
                          'description',
                          'column_names',
-                         'badges']
+                         'badges',
+                         'programmatic_descriptions']
 
     MUST_FIELDS_DASHBOARD = ['name.raw^75',
                              'name^7',
